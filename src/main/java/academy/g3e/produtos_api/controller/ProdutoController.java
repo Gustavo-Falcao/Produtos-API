@@ -33,6 +33,11 @@ public class ProdutoController {
         return new ResponseEntity<>(produtoService.salvarProduto(produtoPostRequestBody), HttpStatus.CREATED);
     }
 
+    @PostMapping("/lote")
+    public ResponseEntity<List<Produto>>adicionarProdutos(@RequestBody List<ProdutoPostRequestBody> produtosPostRequestBody) {
+        return new ResponseEntity<>(produtoService.salvarProdutos(produtosPostRequestBody), HttpStatus.CREATED);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Produto> removerProduto(@PathVariable String id) {
         produtoService.deletarProdutoPorId(id);

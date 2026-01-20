@@ -28,9 +28,24 @@ public class ProdutoService {
         return produtoRepository.save(Produto.builder()
                 .nome(produtoPostRequestBody.getNome())
                 .preco(produtoPostRequestBody.getPreco())
+                .quantidadeEstoque(produtoPostRequestBody.getQuantidadeEstoque())
                 .descricao(produtoPostRequestBody.getDescricao())
                 .categoria(produtoPostRequestBody.getCategoria())
                 .build());
+    }
+
+    public List<Produto>salvarProdutos(List<ProdutoPostRequestBody> produtosPostRequestBody) {
+        List<Produto> produtos = produtosPostRequestBody.stream()
+                .map(produtoPostRequestBody -> Produto.builder()
+                        .nome(produtoPostRequestBody.getNome())
+                        .preco(produtoPostRequestBody.getPreco())
+                        .quantidadeEstoque(produtoPostRequestBody.getQuantidadeEstoque())
+                        .descricao(produtoPostRequestBody.getDescricao())
+                        .categoria(produtoPostRequestBody.getCategoria())
+                        .build())
+                .toList();
+
+        return produtoRepository.saveAll(produtos);
     }
 
     public void deletarProdutoPorId(String id) {
