@@ -1,6 +1,5 @@
 package academy.g3e.produtos_api.requests;
 
-
 import lombok.Data;
 
 @Data
